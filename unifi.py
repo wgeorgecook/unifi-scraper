@@ -39,7 +39,7 @@ def check_inventory():
             if match_ob[-1].strip() == "0":
                 logger.info("No inventory, checking again in 30 seconds")
                 sleep(30)
-                check_inventory()
+                return check_inventory()
             else:
                 logger.info(f"Quantity available: {match_ob[-1]}")
                 pushClient.send_message("Doorbell available!", "Unifi Doorbell Inventory Check", os.environ.get("CLIENT_ID"),"1", "", "2", url, "Open UI Store", "0", "1", "120", "1200", "0", "", "", "")
